@@ -1,0 +1,9 @@
+input:checked + label > div{
+   background-color: #8DFFC9;
+
+   div {
+    background: #262626;
+    left: auto;
+    right: 2px;
+   }
+}

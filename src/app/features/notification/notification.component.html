@@ -1,0 +1,67 @@
+<div class="p-4 mr-9">
+    @defer (when showChannels) {
+    <div class="flex justify-end mb-4">
+        <button class="fk-btn fk-btn-primary" [disabled]="btnDisabled" (click)="sendChannel()">Guardar</button>
+    </div>
+    <div class="mb-14">
+        <div class="pb-4 mb-4 border-b-2 border-gray-fk-800">
+            <h3 class="text-subtitle-1 font-medium text-white mb-2">Cobranza</h3>
+            <p class="font-light text-body-2 text-white">Selecciona los medios por los cuales deseas recibir las alertas de cobro:</p>
+        </div>
+        @for(item of collectionAlerts; track $index){
+            <div class="mb-5 w-full">
+                <input class="hidden" type="checkbox" [(ngModel)]="item.check" id="{{ item.id }}" (change)="changeCheck()" />
+                <label class="font-normal text-body-1 text-white w-full relative block" for="{{ item.id }}">
+                    {{ item.name }}
+                    <div class="absolute right-0 top-0 bg-dark-base-700 w-9 h-5 rounded-xl duration-150 ease-in transition">
+                        <div class="absolute top-0.5 left-0.5 bg-primary-color w-4 h-4 rounded-xl duration-150 ease-in transition"></div>
+                    </div>
+                </label>
+            </div>
+        }
+    </div>
+    <div class="mb-14">
+        <div class="pb-4 mb-4 border-b-2 border-gray-fk-800">
+            <h3 class="text-subtitle-1 font-medium text-white mb-2">Negociaciones de facturas</h3>
+            <p class="font-light text-body-2 text-white">Selecciona los medios por los cuales deseas recibir las alertas de negociación de facturas:</p>
+        </div>
+        @for(item of invoiceNegotiation; track $index){
+            <div class="mb-5 w-full">
+                <input class="hidden" type="checkbox" [(ngModel)]="item.check" id="{{ item.id }}" (change)="changeCheck()" />
+                <label class="font-normal text-body-1 text-white w-full relative block" for="{{ item.id }}">
+                    {{ item.name }}
+                    <div class="absolute right-0 top-0 bg-dark-base-700 w-9 h-5 rounded-xl duration-150 ease-in transition">
+                        <div class="absolute top-0.5 left-0.5 bg-primary-color w-4 h-4 rounded-xl duration-150 ease-in transition"></div>
+                    </div>
+                </label>
+            </div>
+        }
+    </div>
+    <div class="mb-4">
+        <div class="pb-4 mb-4 border-b-2 border-gray-fk-800">
+            <h3 class="text-subtitle-1 font-medium text-white mb-2">Publicidad</h3>
+            <p class="font-light text-body-2 text-white">Selecciona los medios por los cuales deseas recibir los mensajes publicitarios:</p>
+        </div>
+        @for(item of advertisingMessages; track $index){
+            <div class="mb-5 w-full">
+                <input class="hidden" type="checkbox" [(ngModel)]="item.check" id="{{ item.id }}" (change)="changeCheck()" />
+                <label class="font-normal text-body-1 text-white w-full relative block" for="{{ item.id }}">
+                    {{ item.name }}
+                    <div class="absolute right-0 top-0 bg-dark-base-700 w-9 h-5 rounded-xl duration-150 ease-in transition">
+                        <div class="absolute top-0.5 left-0.5 bg-primary-color w-4 h-4 rounded-xl duration-150 ease-in transition"></div>
+                    </div>
+                </label>
+            </div>
+        }
+    </div>
+    } @placeholder {
+        <div class="flex items-center justify-center h-4/5 min-h-[62vh]">
+        <svg class="loader w-[100px] h-[100px] sm:w-[250px] sm:h-[250px]" viewBox="0 0 500 500"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+            d="M 330.322 276.327 C 364.4 282.017 389.624 307.255 389.624 348.259 L 389.624 478.879 L 304.479 478.879 L 304.479 376.636 C 304.479 361.504 295.005 353.299 279.239 353.299 L 175.777 353.299 L 175.777 478.847 L 90.614 478.847 L 90.614 24.627 L 175.777 24.627 L 175.777 275.076 L 240.753 275.076 L 302.579 164.674 L 395.298 164.674 L 330.322 276.327 Z"
+            fill="#8dffc9"></path>
+        </svg>
+        </div>
+    }
+</div>
