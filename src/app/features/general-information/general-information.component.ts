@@ -73,7 +73,7 @@ export class GeneralInformationComponent {
         Validators.maxLength(40),
         Validators.pattern(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/)
       ]),
-      lastName: new FormControl(this.userInfo.LastName ?? "ccsss", [
+      lastName: new FormControl(this.userInfo.LastName ?? "", [
         Validators.required,
         Validators.maxLength(40),
         Validators.pattern(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ ]+$/)

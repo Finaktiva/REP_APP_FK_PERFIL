@@ -22,12 +22,13 @@ import { assetUrl } from '../../../single-spa/asset-url';
 export class ChangePasswordComponent {
 
   check = assetUrl('icons/check.svg');
+
   successfulPassword:boolean = false;
   form!: FormGroup;
-  isShowedPassword = false;
-  errorCurrentPassword= false;
+  isShowedPassword:boolean = false;
+  errorCurrentPassword:boolean = false;
   @Input() email: string = "";
-  @Output() closeModal = new EventEmitter<any>();
+  @Output() closeModal = new EventEmitter<void>();
   
   private authService = inject(LoginService)
 
@@ -48,7 +49,6 @@ export class ChangePasswordComponent {
         ]),
         confirmPassword: new FormControl('', [
           Validators.required,
-          Validators.maxLength(70),
         ]),
       },
       { validators: CustomValidators.MatchPassword }
@@ -77,20 +77,13 @@ export class ChangePasswordComponent {
       oldPassword: this.currentPasswordField.value,
       newPassword: this.passwordField.value
     }
-
-    console.log("data", data);
     
-
     this.authService.changePasswordByOldPassword(data).subscribe({
       next: Response => {
         this.successfulPassword = true;
-        console.log("bien");
-        
       },
       error: error => {
         this.errorCurrentPassword = true;
-        console.log("malmalmal");
-        
       }
     })
   }
