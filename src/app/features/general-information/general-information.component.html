@@ -1,0 +1,111 @@
+<div class="p-4">
+    <div class="flex justify-between items-center pb-4 mb-4 border-b-2 border-gray-fk-800">
+        <h3 class="text-subtitle-1 font-medium text-white">Información personal</h3>
+        <button class="fk-btn fk-btn-primary" [disabled]="isSave || form.invalid" (click)="saveData()">Guardar</button>
+    </div>
+    <div>
+        @defer (when showForm) {
+            <form [formGroup]="form">
+                <div class="flex flex-col sm:flex-row mb-6 gap-6">
+                    <div class="w-full">
+                        <label class="fk-label">Nombre</label>
+                        <input [class]="nameField.errors && nameField.touched ? 'border-error' : 'border-transparent'"
+                            formControlName="name" class="fk-input" placeholder="Escribe tu nombre" (input)="detectChanges('name')"/>
+                        @if(nameField.errors && nameField.touched) {
+                        <app-errors-forms [errors]="nameField.errors"></app-errors-forms>
+                        }
+                    </div>
+                    <div class="w-full">
+                        <label class="fk-label">Apellidos</label>
+                        <input
+                            [class]="lastNameField.errors && lastNameField.touched ? 'border-error' : 'border-transparent'"
+                            class="fk-input" formControlName="lastName" placeholder="Escribe tus apellidos"  (input)="detectChanges('lastName')"/>
+                        @if(lastNameField.errors && lastNameField.touched) {
+                        <app-errors-forms [errors]="lastNameField.errors"></app-errors-forms>
+                        }
+                    </div>
+                </div>
+                <div class="w-full mb-6">
+                    <label class="fk-label">Tipo de documento</label>
+                    <div class="flex gap-2">
+                        <select
+                            [class]="numberIdentityField.errors && numberIdentityField.touched ? 'border-error' : 'border-transparent'"
+                            formControlName="typeDocument" class="fk-select pointer-events-none">
+                            <option value="CC">CC</option>
+                            <option value="CE">CE</option>
+                            <option value="PASS">Pass</option>
+                        </select>
+                        <input
+                            [class]="numberIdentityField.errors && numberIdentityField.touched ? 'border-error' : 'border-transparent'"
+                            formControlName="numberIdentity" class="fk-input pointer-events-none" placeholder="Escribe identificación"/>
+                    </div>
+                    @if(numberIdentityField.errors && numberIdentityField.touched) {
+                    <app-errors-forms [errors]="numberIdentityField.errors"></app-errors-forms>
+                    }
+                </div>
+                <div class="w-full mb-11">
+                    <label class="fk-label">Celular</label>
+                    <div class="flex gap-2">
+                        <select
+                            [class]="telephoneField.errors && telephoneField.touched ? 'border-error' : 'border-transparent'"
+                            formControlName="indicative" class="fk-select" (change)="prefixChanged('telephone', 'indicative')" (input)="detectChanges('indicative')">
+                            @for (country of prefixesData; track $index) {
+                            <option [value]="country.Prefix">{{ country.Prefix }}</option>
+                            }
+                        </select>
+                        <input
+                            [class]="telephoneField.errors && telephoneField.touched ? 'border-error' : 'border-transparent'"
+                            class="fk-input" formControlName="telephone" placeholder="Escribe número de celular" (input)="detectChanges('telephone')"/>
+                    </div>
+                    @if(telephoneField.errors && telephoneField.touched) {
+                    <app-errors-forms [errors]="telephoneField.errors"></app-errors-forms>
+                    }
+                </div>
+                <div class="pb-4 mb-4 border-b-2 border-gray-fk-800">
+                    <h3 class="text-subtitle-1 font-medium text-white">Información de tu usuario</h3>
+                </div>
+                <div class="w-full flex items-center mb-4">
+                    <label class="fk-label w-1/4">Rol de usuario*</label>
+                    <select
+                        [class]="roleIdField.errors && roleIdField.touched ? 'border-error' : 'border-transparent'"
+                        formControlName="roleId" class="fk-select w-full" (change)="detectChanges('roleId')">
+                        <option selected disabled="disabled" value="">seleccione una opcion</option>
+                        @for (item of roles; track $index) {
+                        <option [value]="item.nameRole">{{ item.nameRole }}</option>
+                        }
+                    </select>
+                    @if(roleIdField.errors && roleIdField.touched) {
+                    <app-errors-forms [errors]="roleIdField.errors"></app-errors-forms>
+                    }
+                </div>
+                <div class="w-full mb-4 flex items-center">
+                    <label class="fk-label  w-1/4">Correo electrónico</label>
+                    <input class="fk-input pointer-events-none" [class]="emailField.errors && emailField.touched ? 'border-error' : 'border-transparent'" formControlName="email" placeholder="Escribe tu correo electrónico " />
+                    @if(emailField.touched) {
+                        <app-errors-forms [typeError]="'email'" [errors]="emailField.errors"></app-errors-forms>
+                    }
+                </div>
+                <div class="w-full mb-4 flex items-center">
+                    <label class="fk-label  w-1/4">Contraseña</label>
+                    <div class="flex items-center gap-2.5 w-full">
+                        <input class="fk-input mb-0 border-transparent" type="password" value="**************" disabled/>
+                        <button class="fk-btn fk-btn-primary" (click)="showModal=true">Editar</button>
+                    </div>
+                </div>
+            </form>
+        } @placeholder {
+            <div class="flex items-center justify-center h-4/5 min-h-[62vh]">
+            <svg class="loader w-[100px] h-[100px] sm:w-[250px] sm:h-[250px]" viewBox="0 0 500 500"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                d="M 330.322 276.327 C 364.4 282.017 389.624 307.255 389.624 348.259 L 389.624 478.879 L 304.479 478.879 L 304.479 376.636 C 304.479 361.504 295.005 353.299 279.239 353.299 L 175.777 353.299 L 175.777 478.847 L 90.614 478.847 L 90.614 24.627 L 175.777 24.627 L 175.777 275.076 L 240.753 275.076 L 302.579 164.674 L 395.298 164.674 L 330.322 276.327 Z"
+                fill="#8dffc9"></path>
+            </svg>
+            </div>
+            }
+    </div>
+</div>
+
+@if(showModal) {
+    <app-change-password [email]="userInfo.Email" (closeModal)="showModal=false"></app-change-password>
+}

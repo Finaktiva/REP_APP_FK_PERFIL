@@ -1,0 +1,32 @@
+export interface IUser {
+    id: string;
+    AuditActived?: null;
+    BrokerActivate: boolean;
+    CompanyNit: string;
+    CreationDate: string;
+    CreationDateExpire: string;
+    FirstLogin?: null;
+    HowDidYouMeetUs: string;
+    Nit: string;
+    IdCompany?: null;
+    Indicative: string;
+    InterestOptions: string[];
+    IsLegalBroker?: null;
+    LegalRepresentative: boolean;
+    Name: string;
+    TypeDocument : string;
+    NotificationChannel?: null;
+    PhoneNumbersHistory?: null;
+    PipedriveId: number;
+    PromotionalCode: string;
+    Status: boolean;
+    Telephone: string;
+    WhatDoYouDo?: null;
+    isUserPrimary: boolean;
+    LastName: string;
+    RoleId: string;
+    tokenLockDate : string;
+    tokenAttempts : number;
+    userFlow : string;
+    NumberIdentity : string;
+}

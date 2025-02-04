@@ -1,0 +1,109 @@
+/* You can add global styles to this file, and also import other style files */
+@use 'tailwindcss/base' as *;
+@use 'tailwindcss/components' as *;
+@use 'tailwindcss/utilities' as *;
+
+@layer components {
+    .fk-form-container {
+      @apply lg:w-[500px] md:w-full sm:w-full p-4;
+    }
+  
+    .fk-form {
+      @apply flex flex-col gap-6 text-[#F7F7F7] w-full;
+    }
+  
+    .fk-form-content {
+      @apply flex flex-col gap-4;
+    }
+  
+    .fk-form-content-group {
+      @apply flex flex-col;
+    }
+  
+    .fk-form-title {
+      @apply mb-[51px] text-[30px] font-bold text-gray-fk-50 not-italic text-center;
+    }
+  
+    .fk-btn{
+      @apply xl:py-3 py-2 px-6 rounded-lg leading-5 xl:text-body-2 text-body-3 font-semibold cursor-pointer text-center relative;
+    }
+  
+    .fk-btn-primary {
+      @apply bg-primary-color text-black hover:bg-green-fk-100 active:bg-green-fk-400  disabled:bg-dark-base-900 disabled:text-dark-base-600 border-transparent;
+    }
+  
+    .fk-btn-secondary {
+      @apply bg-dark-base-900 text-dark-base-200 hover:bg-dark-base-700 active:bg-dark-base-950 disabled:text-dark-base-600 border-transparent;
+    }
+  
+    .fk-btn-loading {
+      @apply absolute top-2 right-3 animate-spin;
+    }
+  
+    .fk-label {
+      @apply text-subtitle-2 text-gray-fk-50 font-medium w-full mb-2 inline-block;
+    }
+  
+    .fk-input {
+      @apply w-full bg-dark-base-900 rounded-lg placeholder:text-gray-fk-400 py-3 px-4 mb-1 disabled:opacity-100 disabled:text-gray-fk-600 border outline-none text-white font-normal text-body-3 2xl:text-body-2;
+    }
+  
+    .fk-select {
+      @apply rounded-lg bg-dark-base-900 text-white pt-3 pb-3.5 px-1 mb-1 border disabled:text-gray-fk-600 disabled:opacity-100 outline-none text-white;
+    }
+  
+    .fk-check {
+      @apply relative border-2 border-dark-base-400 w-4 h-4 rounded-sm mr-2 top-1  appearance-none;
+  
+      &:checked {
+        @apply border-primary-color accent-primary-color;
+        -webkit-appearance: auto;
+        -moz-appearance: auto;
+      }
+    }
+  
+    .fk-modal-overlay {
+      @apply fixed top-0 left-0 right-0 bottom-0 z-10 w-screen h-screen overflow-y-auto;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+  
+    .fk-modal-card {
+      @apply
+      bg-dark-base-950
+      shadow-lg
+      shadow-black
+      rounded-2xl
+      p-6
+      flex
+      flex-col
+      m-2
+      border-2
+      border-dark-base-900
+      text-white
+      w-4/5
+      h-auto
+      absolute;
+      animation: fadeIn 0.5s ease-in-out;
+      margin-top: 25vh;
+    }
+  
+    .fk-flex-center {
+      @apply flex justify-center align-middle;
+    }
+    .fk-flex-between {
+      @apply flex justify-between align-middle;
+    }
+    .fk-modal-container {
+      @apply flex
+      justify-center
+      align-middle;
+    }
+  
+    .fk-error {
+      @apply border border-solid border-error;
+    }
+  
+    .fk-error-message {
+      @apply text-body-3 text-error font-normal;
+    }
+  }
