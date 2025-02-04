@@ -157,7 +157,6 @@ export class NotificationComponent {
     }
     
     this.contactMeansService.putDontBother(data).subscribe(response => {
-      console.log(response);
       this.btnDisabled = true;
       this.showChannels =  false;
       this.getContactMeans();
@@ -165,7 +164,6 @@ export class NotificationComponent {
   }
 
   changeCheck(){
-    console.log("ddddddddddddddddddddddddddddddd");
     this.btnDisabled = false;
   }
 
